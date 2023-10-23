@@ -44,7 +44,6 @@ async function getHumedad() {
 }
 
 async function getTemperatura(){
-    try {
         let sensorId = "2496";
         let inicio = fecha.toISOString().slice(0, 16);
         let fin = new Date().toISOString().slice(0, 16);
@@ -52,7 +51,7 @@ async function getTemperatura(){
 
         const url = `https://airadvanced.net/airadvanced/validacion/datos/${sensorId}/${inicio}/${fin}`;
         console.log(url);
-        
+         try {
         const response  = await axios.get(url, {
             headers: {
                 'Authorization': authorization
