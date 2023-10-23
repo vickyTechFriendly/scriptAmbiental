@@ -4,7 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node estacion1.js & node estacion2.js & node estacion3.js & node estacion4.js & node estacion5.js & node estacion6.js & node estacion7.js & node estacion8.js & node estacion9.js & node estacion10.js"
   },
   "author": "",
   "license": "ISC",

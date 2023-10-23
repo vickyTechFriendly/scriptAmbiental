@@ -255,7 +255,7 @@ let ICA;
                     'Content-Type': 'application/json'
                 }
             });
-        console.log(`Datos enviados correctamente`);
+        console.log(`Datos Estación 4 enviados correctamente`);
 
     } catch (error) {
         if (error.response) {
@@ -269,4 +269,4 @@ let ICA;
 }
 }
 
-sendTelemetry();
+setInterval(sendTelemetry, 300000);

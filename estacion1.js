@@ -3,7 +3,7 @@ require('dotenv').config();
 const axios = require ('axios');
 
 const fechaActual = new Date();
-const fechaAnterior = 60 * 60 * 1000;
+const fechaAnterior = 75 * 60 * 1000;
 const fecha = new Date(fechaActual.getTime() - fechaAnterior);
 
 async function fetchData(sensorId) {
@@ -255,7 +255,7 @@ let ICA;
                     'Content-Type': 'application/json'
                 }
             });
-        console.log(`Datos enviados correctamente`);
+        console.log(`Datos Estación 1 enviados correctamente`);
 
     } catch (error) {
         if (error.response) {
@@ -269,4 +269,5 @@ let ICA;
 }
 }
 
-sendTelemetry();
+//ejecutar sendTelemetry cada 5 minutos
+setInterval(sendTelemetry, 300000);
