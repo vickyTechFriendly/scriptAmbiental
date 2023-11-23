@@ -247,7 +247,7 @@ let ICA;
             ICA,
         }
                 
-        //console.log("Datos de humedad obtenidos de la API: ", telemetryData);
+        console.log("Datos ambientales obtenidos de la API: ", telemetryData);
 
         await axios.post(`https://${plataforma}/api/v1/${accessToken}/telemetry`, telemetryData,{
                 headers: {
