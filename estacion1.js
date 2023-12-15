@@ -2,11 +2,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 require('dotenv').config();
 const axios = require ('axios');
 
+async function fetchData(sensorId) {
 const fechaActual = new Date();
 const fechaAnterior = 75 * 60 * 1000;
 const fecha = new Date(fechaActual.getTime() - fechaAnterior);
 
-async function fetchData(sensorId) {
   const inicio = fecha.toISOString().slice(0, 16);
   const fin = new Date().toISOString().slice(0, 16);
   const authorization = process.env.token;
@@ -247,7 +247,7 @@ let ICA;
             ICA,
         }
                 
-        console.log("Datos ambientales obtenidos de la API: ", telemetryData);
+        console.log("Datos ambientales estacion_1: ", telemetryData);
 
         await axios.post(`https://${plataforma}/api/v1/${accessToken}/telemetry`, telemetryData,{
                 headers: {
@@ -269,5 +269,5 @@ let ICA;
 }
 }
 
-//ejecutar sendTelemetry cada 5 minutos
+sendTelemetry()
 setInterval(sendTelemetry, 300000);
