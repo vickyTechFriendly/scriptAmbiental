@@ -141,91 +141,91 @@ let ICA;
         if (dataHumedad && dataHumedad.length > 0) {
             HR = dataHumedad[0].valor;
         } else {
-            console.log("No hay datos de HR disponibles.");
+            console.log("No hay datos de HR disponibles para la estacion 3.");
             return; 
         }
         if (dataTemperatura && dataTemperatura.length > 0) {
             TMP = dataTemperatura[0].valor;
         } else {
-            console.log("No hay datos de temperatura disponibles.");
+            console.log("No hay datos de temperatura disponibles para la estacion 3.");
             return; 
         }
         if (dataPresion && dataPresion.length > 0) {
             PRB = dataPresion[0].valor;
         } else {
-            console.log("No hay datos de presión disponibles.");
+            console.log("No hay datos de presión disponibles para la estacion 3.");
             return; 
         }
         if (dataParticulasPM1 && dataParticulasPM1.length > 0) {
             PM1 = dataParticulasPM1[0].valor;
         } else {
-            console.log("No hay datos de particulas PM1 disponibles.");
+            console.log("No hay datos de particulas PM1 disponibles para la estacion 3.");
             return; 
         }
         if (dataRuido && dataRuido.length > 0) {
             R = dataRuido[0].valor;
         } else {
-            console.log("No hay datos de ruido disponibles.");
+            console.log("No hay datos de ruido disponibles para la estacion 3.");
             return; 
         }
         if (dataNO && dataNO.length > 0) {
             NO = dataNO[0].valor;
         }else {
-            console.log("No hay datos de NO disponibles.");
+            console.log("No hay datos de NO disponibles para la estacion 3.");
             return; 
         }
         if (dataCO && dataCO.length > 0) {
             CO = dataCO[0].valor;
         }else {
-            console.log("No hay datos de CO disponibles.");
+            console.log("No hay datos de CO disponibles para la estacion 3.");
             return;
         }
         if (dataO3 && dataO3.length > 0) {
             O3 = dataO3[0].valor;
         }else {
-            console.log("No hay datos de O3 disponibles.");
+            console.log("No hay datos de O3 disponibles para la estacion 3.");
             return;
         }
         if (dataNO2 && dataNO2.length > 0) {
             NO2 = dataNO2[0].valor;
         }else {
-            console.log("No hay datos de NO2 disponibles.");
+            console.log("No hay datos de NO2 disponibles para la estacion 3.");
             return;
         }
         if (dataPM25 && dataPM25.length > 0) {
             PM25 = dataPM25[0].valor;
         }else {
-            console.log("No hay datos de PM25 disponibles.");
+            console.log("No hay datos de PM25 disponibles para la estacion 3.");
             return;
         }
         if (dataVV && dataVV.length > 0) {
             VV = dataVV[0].valor;
         }else {
-            console.log("No hay datos de VV disponibles.");
+            console.log("No hay datos de VV disponibles para la estacion 3.");
             return;
         }
         if (dataDD && dataDD.length > 0) {
             DD = dataDD[0].valor;
         }else {
-            console.log("No hay datos de DD disponibles.");
+            console.log("No hay datos de DD disponibles para la estacion 3.");
             return;
         }
         if (dataPM10 && dataPM10.length > 0) {
             PM10 = dataPM10[0].valor;
         }else {
-            console.log("No hay datos de PM10 disponibles.");
+            console.log("No hay datos de PM10 disponibles para la estacion 3.");
             return;
         }
         if (dataSO2 && dataSO2.length > 0) {
             SO2 = dataSO2[0].valor;
         }else {
-            console.log("No hay datos de SO2 disponibles.");
+            console.log("No hay datos de SO2 disponibles para la estacion 3.");
             return;
         }
         if (dataICA && dataICA.length > 0) {
             ICA = dataICA[0].valor;
         }else {
-            console.log("No hay datos de ICA disponibles.");
+            console.log("No hay datos de ICA disponibles para la estacion 3.");
             return;
         }
 
@@ -247,7 +247,7 @@ let ICA;
             ICA,
         }
                 
-        //console.log("Datos estación 3: ", telemetryData);
+        console.log("Datos estación 3: ", telemetryData);
 
         await axios.post(`https://${plataforma}/api/v1/${accessToken}/telemetry`, telemetryData,{
                 headers: {
