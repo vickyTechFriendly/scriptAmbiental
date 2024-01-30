@@ -104,20 +104,6 @@ async function getICA() {
 
 const plataforma = "smart.albacete.es";
 const accessToken = process.env.estacion6;
-let HR;
-let TMP;
-let PRB;
-let PM1;
-let R;
-let NO;
-let CO;
-let O3;
-let NO2;
-let PM25;
-let VV;
-let PM10;
-let SO2;
-let ICA;
 
   async function sendTelemetry() {
     try { 
@@ -137,117 +123,60 @@ let ICA;
         const dataSO2 = await getSO2();
         const dataICA = await getICA();
         
-
+        let telemetryData = {};
+        
         if (dataHumedad && dataHumedad.length > 0) {
-            HR = dataHumedad[0].valor;
-        } else {
-            console.log("No hay datos de HR disponibles para la estacion 6.");
-            return; 
-        }
+            telemetryData.HR = dataHumedad[0].valor;
+        }  
         if (dataTemperatura && dataTemperatura.length > 0) {
-            TMP = dataTemperatura[0].valor;
-        } else {
-            console.log("No hay datos de temperatura disponibles para la estacion 6.");
-            return; 
+            telemetryData.TMP = dataTemperatura[0].valor;
         }
         if (dataPresion && dataPresion.length > 0) {
-            PRB = dataPresion[0].valor;
-        } else {
-            console.log("No hay datos de presión disponibles para la estacion 6.");
-            return; 
+            telemetryData.PRB = dataPresion[0].valor;
         }
         if (dataParticulasPM1 && dataParticulasPM1.length > 0) {
-            PM1 = dataParticulasPM1[0].valor;
-        } else {
-            console.log("No hay datos de particulas PM1 disponibles para la estacion 6.");
-            return; 
+            telemetryData.PM1 = dataParticulasPM1[0].valor;
         }
         if (dataRuido && dataRuido.length > 0) {
-            R = dataRuido[0].valor;
-        } else {
-            console.log("No hay datos de ruido disponibles para la estacion 6");
-            return; 
+            telemetryData.R = dataRuido[0].valor;
         }
         if (dataNO && dataNO.length > 0) {
-            NO = dataNO[0].valor;
-        }else {
-            console.log("No hay datos de NO disponibles para la estacion 6.");
-            return; 
+            telemetryData.NO = dataNO[0].valor;
         }
         if (dataCO && dataCO.length > 0) {
-            CO = dataCO[0].valor;
-        }else {
-            console.log("No hay datos de CO disponibles para la estacion 6.");
-            return;
+            telemetryData.CO = dataCO[0].valor;
         }
         if (dataO3 && dataO3.length > 0) {
-            O3 = dataO3[0].valor;
-        }else {
-            console.log("No hay datos de O3 disponibles para la estacion 6.");
-            return;
+            telemetryData.O3 = dataO3[0].valor;
         }
         if (dataNO2 && dataNO2.length > 0) {
-            NO2 = dataNO2[0].valor;
-        }else {
-            console.log("No hay datos de NO2 disponibles para la estacion 6.");
-            return;
+            telemetryData.NO2 = dataNO2[0].valor;
         }
         if (dataPM25 && dataPM25.length > 0) {
-            PM25 = dataPM25[0].valor;
-        }else {
-            console.log("No hay datos de PM25 disponibles para la estacion 6.");
-            return;
+            telemetryData.PM25 = dataPM25[0].valor;
         }
         if (dataVV && dataVV.length > 0) {
-            VV = dataVV[0].valor;
-        }else {
-            console.log("No hay datos de VV disponibles para la estacion 6.");
-            return;
+            telemetryData.VV = dataVV[0].valor;
         }
         if (dataDD && dataDD.length > 0) {
-            DD = dataDD[0].valor;
-        }else {
-            console.log("No hay datos de DD disponibles para la estacion 6.");
-            return;
+            telemetryData.DD = dataDD[0].valor;
         }
         if (dataPM10 && dataPM10.length > 0) {
-            PM10 = dataPM10[0].valor;
-        }else {
-            console.log("No hay datos de PM10 disponibles para la estacion 6.");
-            return;
+            telemetryData.PM10 = dataPM10[0].valor;
         }
         if (dataSO2 && dataSO2.length > 0) {
-            SO2 = dataSO2[0].valor;
-        }else {
-            console.log("No hay datos de SO2 disponibles para la estacion 6.");
-            return;
+            telemetryData.SO2 = dataSO2[0].valor;
         }
         if (dataICA && dataICA.length > 0) {
-            ICA = dataICA[0].valor;
-        }else {
-            console.log("No hay datos de ICA disponibles para la estacion 6.");
-            return;
+            telemetryData.ICA = dataICA[0].valor;
         }
 
-        const telemetryData = {
-            HR,
-            TMP,
-            PRB,
-            PM1,
-            R,
-            NO,
-            CO,
-            O3,
-            NO2,
-            PM25,
-            VV,
-            DD,
-            PM10,
-            SO2,
-            ICA,
+        if(Object.keys(telemetryData).length === 0) {
+            console.log("No hay datos diponibles para la estación 6.");
+            return;
         }
                 
-        //console.log("Datos estación 6: ", telemetryData);
+        //console.log("Datos estación 6:", telemetryData);
 
         await axios.post(`https://${plataforma}/api/v1/${accessToken}/telemetry`, telemetryData,{
                 headers: {
@@ -255,7 +184,7 @@ let ICA;
                     'Content-Type': 'application/json'
                 }
             });
-        console.log(`Datos Estación 6 enviados correctamente`);
+            console.log("Datos enviados estación 6:", telemetryData);
 
     } catch (error) {
         if (error.response) {

@@ -176,7 +176,7 @@ const accessToken = process.env.estacion5;
             return;
         }
                 
-        console.log("Datos estación 5: ", telemetryData);
+        //console.log("Datos estación 5: ", telemetryData);
 
         await axios.post(`https://${plataforma}/api/v1/${accessToken}/telemetry`, telemetryData,{
                 headers: {
@@ -184,7 +184,7 @@ const accessToken = process.env.estacion5;
                     'Content-Type': 'application/json'
                 }
             });
-        console.log(`Datos Estación 5 enviados correctamente`);
+            console.log("Datos enviados estación 5:", telemetryData);
 
     } catch (error) {
         if (error.response) {
